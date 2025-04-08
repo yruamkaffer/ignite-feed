@@ -6,6 +6,37 @@ import styles from './App.module.css';
 
 import './global.css';
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/yruamkaffer.png',
+      name: 'Yruam Käffer',
+      role: 'Projetista',
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2025-04-03 20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/123456789.png',
+      name: 'Mainha',
+      role: 'Sacolera',
+    },
+    content: [
+      { type: 'paragraph', content: 'Galeraa 👋'},
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa.É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare'},
+    ],
+    publishedAt: new Date('2025-03-10 20:00:00'),
+  },
+];
+
 export function App() {
 
   return (
@@ -17,15 +48,15 @@ export function App() {
         <Sidebar />
 
         <main>
-            <Post
-          autor="Yruam Käffer de Faria"
-          content="Lorem ipsulum"
-          />
-          
-          <Post 
-          autor="Yruam Käffer de Faria"
-          content="Lorem ipsulum"
-          />
+            {posts.map(post => {
+              return (
+                <Post
+                  author={post.author}
+                  content={post.content}
+                  publishedAt={post.publishedAt}
+                />
+              )
+            })}
         </main>
       </div>
     </div>
